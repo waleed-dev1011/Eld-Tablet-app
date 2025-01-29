@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity} from 'react-native';
-import {colors} from '../../../config/colors';
-import {mvs} from '../../../config/metrices';
+import { colors } from '../../../util/color';
+import { mvs } from '../../../util/metrices';
+
 // import Icon from 'react-native-vector-icons/AntDesign';
 
 type IProps = {
