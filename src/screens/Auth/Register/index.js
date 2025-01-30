@@ -11,10 +11,15 @@ import {
   Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Input from '../../components/Home/Forms/InputField';
-import {EYESVG} from '../../assets/svg';
-import Button from '../../components/Home/Structure/Button';
-import {colors} from '../../util/color';
+import styles from './styles';
+import {MyButton} from '../../../components/atoms/InputFields/MyButton';
+import PrimaryTextInput from '../../../components/atoms/InputFields/PrimaryTextInput';
+import {colors} from '../../../util/color';
+import {EYESVG} from '../../../assets/svg';
+import LogoSvg from '../../../assets/svg/logo-svg';
+import PrimaryPasswordInput from '../../../components/atoms/InputFields/PrimaryPasswordInput';
+import {KeyboardAvoidScrollview} from '../../../components/atoms/InputFields/KeyboardAvoidScroll';
+
 const SignUp = ({navigation}) => {
   const [fullName, setFullName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -26,8 +31,6 @@ const SignUp = ({navigation}) => {
   const [passwordError, setPasswordError] = useState('');
   const [nameError, setNameError] = useState('');
   const [numberError, setNumberError] = useState('');
-  const MAX_NAME_LENGTH = 30;
-  const MAX_PASSWORD_LENGTH = 20;
   const PHONE_NUMBER_LENGTH = 11;
   const isEmailValid = email => {
     const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
@@ -130,7 +133,7 @@ const SignUp = ({navigation}) => {
     setAcceptTerms(!acceptTerms);
   };
   return (
-    <KeyboardAvoidingView
+    <KeyboardAvoidScrollview
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       <ScrollView>
@@ -140,48 +143,36 @@ const SignUp = ({navigation}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Image
-            source={require('../../assets/img/logo.png')}
-            style={{
-              height: '50%',
-              width: '50%',
-              resizeMode: 'contain',
-              // alignItems: 'center',
-            }}
-          />
+          <LogoSvg />
         </View>
-        <Input
+        <PrimaryPasswordInput
           value={fullName}
           onChangeText={setFullName}
           placeholder="Full name"
           error={nameError}
         />
-        <Input
+        <PrimaryPasswordInput
           value={phoneNumber}
           onChangeText={setPhoneNumber}
           placeholder="Phone number"
           error={numberError}
           keyboardType="phone-pad"
         />
-        <Input
+        <PrimaryPasswordInput
           value={email}
           onChangeText={setEmail}
           placeholder="Email address"
           error={emailError}
         />
         <View style={styles.passwordContainer}>
-          <Input
+          <PrimaryPasswordInput
             value={password}
             onChangeText={setPassword}
             placeholder="Password"
+            rightIcon={<EYESVG />}
             secureTextEntry={securePassword}
             error={passwordError}
           />
-          <TouchableOpacity
-            onPress={togglePasswordVisibility}
-            style={styles.iconContainer}>
-            <EYESVG />
-          </TouchableOpacity>
         </View>
         <View style={styles.termsContainer}>
           <TouchableOpacity
@@ -201,7 +192,7 @@ const SignUp = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.ButtonContainer}>
-          <Button title="Sign up" onPress={handleSignUp} />
+          <MyButton title="Sign up" onPress={handleSignUp} />
           <Text style={styles.loginText}>
             Already have an account?
             <Text
@@ -212,73 +203,7 @@ const SignUp = ({navigation}) => {
           </Text>
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </KeyboardAvoidScrollview>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 30,
-    backgroundColor: colors.black,
-  },
-  logoContainer: {
-    height: 300,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    width: '50%',
-    height: '50%',
-  },
-  passwordContainer: {
-    position: 'relative',
-  },
-  iconContainer: {
-    position: 'absolute',
-    right: 15,
-    top: 15,
-  },
-  icon1: {
-    width: 24,
-    height: 24,
-  },
-  termsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  termsContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  checkbox: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
-    borderWidth: 1,
-    borderColor: colors.white,
-    backgroundColor: 'transparent',
-    borderRadius: 5,
-  },
-  termsText: {
-    color: colors.white,
-    fontSize: 14,
-  },
-  termsLink: {
-    fontWeight: 'bold',
-  },
-  ButtonContainer: {
-    marginTop: 30,
-  },
-  loginText: {
-    color: colors.white,
-    textAlign: 'center',
-    marginTop: 10,
-  },
-  loginLink: {
-    color: colors.white,
-    fontFamily: 'DMSans-Bold',
-    fontSize: 18,
-  },
-});
 export default SignUp;

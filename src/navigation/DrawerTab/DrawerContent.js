@@ -2,17 +2,16 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {
   ChatSVG,
-  GallerySvg,
   HOMESVG,
   NotificationSVG,
   ProfileSVG,
   SettingSVG,
 } from '../../assets/svg';
-import {colors} from '../../util/color';
-import {mvs} from '../../util/metrices';
-import Line from '../../components/Home/Drawers/Line';
-import Bold from '../../typography/BoldText';
 import Regular from '../../typography/RegularText';
+import Line from '../../components/atoms/InputFields/Line';
+import Bold from '../../typography/BoldText';
+import {mvs} from '../../util/metrices';
+import {colors} from '../../util/color';
 const CustomDrawerContent = props => {
   const {navigation} = props;
   const handleNavigate = screenName => {

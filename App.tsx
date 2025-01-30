@@ -6,6 +6,8 @@ import {persistor, store} from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigation/StackNavigation/Navigation';
+import {LogBox} from 'react-native';
+LogBox.ignoreAllLogs();
 export default function App() {
   return (
     <Provider store={store}>

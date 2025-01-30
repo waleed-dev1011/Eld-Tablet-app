@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 import {
-  Text,
   TouchableOpacity,
-  StyleSheet,
   View,
   Image,
   KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import {setUser} from '../../redux/slices/userSlice';
 import {useNavigation} from '@react-navigation/native';
-import {EYESVG} from '../../assets/svg';
-import Button from '../../components/Home/Structure/Button';
-import Input from '../../components/Home/Forms/InputField';
-import {colors} from '../../util/color';
+import Regular from '../../../typography/RegularText';
+import styles from './styles';
+import {MyButton} from '../../../components/atoms/InputFields/MyButton';
+import PrimaryTextInput from '../../../components/atoms/InputFields/PrimaryTextInput';
+import {setUser} from '../../../redux/slices/userSlice';
+import LogoSvg from '../../../assets/svg/logo-svg';
+import {EYESVG} from '../../../assets/svg';
+import PrimaryPasswordInput from '../../../components/atoms/InputFields/PrimaryPasswordInput';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -72,17 +73,9 @@ const LoginScreen = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Image
-            source={require('../../assets/img/logo.png')}
-            style={{
-              height: '50%',
-              width: '50%',
-              resizeMode: 'contain',
-              // alignItems: 'center',
-            }}
-          />
+          <LogoSvg />
         </View>
-        <Input
+        <PrimaryPasswordInput
           value={email}
           onChangeText={setEmail}
           placeholder="Email address"
@@ -90,103 +83,27 @@ const LoginScreen = () => {
         />
 
         <View style={styles.passwordContainer}>
-          <Input
+          <PrimaryPasswordInput
             value={password}
             onChangeText={setPassword}
             placeholder="Password"
+            rightIcon={<EYESVG />}
             secureTextEntry={securePassword}
             error={passwordError}
           />
-          <TouchableOpacity
-            onPress={togglePasswordVisibility}
-            style={styles.iconContainer}>
-            <EYESVG />
-          </TouchableOpacity>
         </View>
 
         <View style={styles.buttonContainer}>
-          <Button title="Sign in" onPress={handleLogin} />
-          <Text style={styles.registerText}>
+          <MyButton title="Sign in" onPress={handleLogin} />
+          <Regular style={styles.registerText}>
             Don’t have an account?
-            <Text style={styles.registerLink} onPress={navigateToRegister}>
+            <Regular style={styles.registerLink} onPress={navigateToRegister}>
               Register
-            </Text>
-          </Text>
+            </Regular>
+          </Regular>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  buttonContainer: {
-    marginTop: 30,
-  },
-  passwordContainer: {
-    position: 'relative',
-  },
-  iconContainer: {
-    position: 'absolute',
-    right: 15,
-    top: 15,
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 30,
-    backgroundColor: colors.black,
-  },
-  text: {
-    marginVertical: 10,
-  },
-  button: {
-    backgroundColor: '#6200ee',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  input: {
-    marginRight: 10,
-    paddingLeft: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 5,
-    // justifyContent: 'center',
-    height: 50,
-    width: '100%',
-  },
-  inputError: {
-    borderColor: 'red', // Border color for error
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 12,
-    marginTop: 5,
-  },
-
-  eyeIcon: {
-    position: 'absolute',
-    right: 10,
-    top: 12,
-    zIndex: 1,
-  },
-  registerText: {
-    // color: '#f4f4f4',
-    color: colors.halfwhite,
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  registerLink: {
-    // color: '#fff',
-    fontWeight: 'bold',
-    marginBottom: 20,
-    fontSize: 18,
-    fontFamily: 'DMSans-Bold',
-  },
-});
-
 export default LoginScreen;

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
-import * as SVG from "../../assets/icons/user";
-import { mvs } from "../../config/metrices";
-import { Row } from "./row";
-import { colors } from "react-native-elements";
+import React, {useState} from 'react';
+import {StyleSheet, TextInput, View} from 'react-native';
+import * as SVG from '../../../assets/svg';
+import {Row} from '../row';
+import {mvs} from '../../../util/metrices';
+import {colors} from '../../../util/color';
 const PrimaryTextInput = ({
   leftIcon,
   rightIcon,
-  placeholder = "",
+  placeholder = '',
   style,
   editable = true,
 }) => {
@@ -16,14 +16,13 @@ const PrimaryTextInput = ({
 
   const [counter, setCounter] = useState(0);
   return (
-    <Row style={{ ...styles.main, ...style }}>
+    <Row style={{...styles.main, ...style}}>
       <View>{LeftIcon ? <LeftIcon /> : null}</View>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
         editable={editable}
-        placeholderTextColor={"lightgray"}
-      ></TextInput>
+        placeholderTextColor={'lightgray'}></TextInput>
       {RightIcon ? <RightIcon width={20} /> : null}
     </Row>
   );
@@ -32,8 +31,8 @@ export default PrimaryTextInput;
 
 const styles = StyleSheet.create({
   main: {
-    alignItems: "center",
-    justifyContent: "flex-start",
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     marginVertical: mvs(10),
     paddingHorizontal: mvs(5),
     height: mvs(50),
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
 
   counter: {
     marginVertical: mvs(16),
-    alignItems: "center",
+    alignItems: 'center',
     padding: mvs(5),
   },
   input: {

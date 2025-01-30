@@ -10,11 +10,11 @@ import {
 } from '../../assets/svg';
 import {colors} from '../../util/color';
 import {mvs} from '../../util/metrices';
-import HomeScreen from '../../screens/Starting/Home';
-import Chat from '../../screens/Starting/Chat';
-import NotificationScreen from '../../screens/Starting/Notification';
-import Settings from '../../screens/Starting/Settings';
-import Profile from '../../screens/Starting/Profile';
+import HomeScreen from '../../screens/App/Home';
+import Chat from '../../screens/App/Chat';
+import NotificationScreen from '../../screens/App/Notification';
+import Settings from '../../screens/App/Settings';
+import Profile from '../../screens/App/Profile';
 const Tab = createBottomTabNavigator();
 const MyTabs = () => {
   return (
