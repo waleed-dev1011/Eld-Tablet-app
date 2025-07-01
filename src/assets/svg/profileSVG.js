@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 const ProfileSVG = props => (
   <Svg
-    fill="#000000"
+    fill="#777E90"
     width="23px"
     height="23px"
     viewBox="0 0 35 35"

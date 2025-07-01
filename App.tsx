@@ -6,7 +6,7 @@ import {persistor, store} from './src/redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigation/StackNavigation/Navigation';
-import {LogBox} from 'react-native';
+import {LogBox, StatusBar} from 'react-native';
 LogBox.ignoreAllLogs();
 export default function App() {
   return (
@@ -14,6 +14,7 @@ export default function App() {
       <PersistGate loading={null} persistor={persistor}>
         <GestureHandlerRootView>
           <NavigationContainer>
+            {/* <StatusBar barStyle="dark-content" backgroundColor="#fff" /> */}
             <AppNavigator />;
           </NavigationContainer>
         </GestureHandlerRootView>

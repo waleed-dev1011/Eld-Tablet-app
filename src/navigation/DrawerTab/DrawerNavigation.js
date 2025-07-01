@@ -4,6 +4,7 @@ import React from 'react';
 import {colors} from '../../util/color';
 import MyTabs from '../BottomTab/bottomTab'; // MyTabs should be inside the drawer
 import CustomDrawerContent from './DrawerContent'; // Custom Drawer Content
+import HomeScreen from '../../screens/App/Home';
 
 const Drawer = createDrawerNavigator();
 
@@ -19,7 +20,7 @@ const DrawerNavigation = () => {
           borderBottomRightRadius: 15,
         },
       }}>
-      <Drawer.Screen name="MyTabs" component={MyTabs} />
+      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
     </Drawer.Navigator>
   );
 };

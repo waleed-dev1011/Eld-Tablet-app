@@ -1,109 +1,149 @@
 import React, {useState} from 'react';
 import {
-  TouchableOpacity,
   View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
   Image,
-  KeyboardAvoidingView,
-  ScrollView,
+  Dimensions,
+  StatusBar,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import Regular from '../../../typography/RegularText';
+import {mvs} from '../../../util/metrices';
+import {colors} from '../../../util/color';
+import {EYESVG, HideSvg} from '../../../assets/svg';
+import InfoBar from '../../../components/InfoBar';
 import styles from './styles';
-import {MyButton} from '../../../components/atoms/InputFields/MyButton';
-import PrimaryTextInput from '../../../components/atoms/InputFields/PrimaryTextInput';
-import {setUser} from '../../../redux/slices/userSlice';
-import LogoSvg from '../../../assets/svg/logo-svg';
-import {EYESVG} from '../../../assets/svg';
-import PrimaryPasswordInput from '../../../components/atoms/InputFields/PrimaryPasswordInput';
+import {useNavigation} from '@react-navigation/native';
+
+const {width, height} = Dimensions.get('window');
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [securePassword, setSecurePassword] = useState(true);
-  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
 
   const handleLogin = () => {
-    if (!isEmailValid(email)) {
-      setEmailError('Please enter a valid email.');
-      return;
-    } else {
-      setEmailError('');
-    }
-
-    if (!isPasswordValid(password)) {
-      setPasswordError('Password must be at least 8 characters.');
-      return;
-    } else {
-      setPasswordError('');
-    }
-
-    const dummyToken = '12345';
-    dispatch(setUser(dummyToken));
-    console.log('Navigating to drawer');
+    // Handle login logic here
+    console.log('Login pressed', {email, password});
     navigation.navigate('DrawerNavigation');
   };
 
-  const isEmailValid = email => {
-    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-    return emailRegex.test(email);
-  };
-
-  const isPasswordValid = password => {
-    return password.length >= 8;
-  };
-  const navigateToRegister = () => {
-    navigation.navigate('Register');
-  };
-  const togglePasswordVisibility = () => {
-    setSecurePassword(!securePassword);
-  };
-
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <ScrollView>
-        <View
-          style={{
-            height: 300,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <LogoSvg />
-        </View>
-        <PrimaryPasswordInput
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Email address"
-          error={emailError}
-        />
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" />
 
-        <View style={styles.passwordContainer}>
-          <PrimaryPasswordInput
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Password"
-            rightIcon={<EYESVG />}
-            secureTextEntry={securePassword}
-            error={passwordError}
+      {/* Left Side - Red Gradient with App Download */}
+      <View style={[styles.leftContainer]}>
+        <Image
+          source={require('../../../assets/img/Login_Left.png')}
+          style={{
+            height: '100%',
+            width: '100%',
+            resizeMode: 'cover',
+          }}
+        />
+      </View>
+
+      {/* Right Side - Login Form */}
+      <View style={styles.rightContainer}>
+        {/* Logo */}
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../../assets/img/Book_ELD.png')}
+            style={{
+              height: mvs(80),
+              width: mvs(80),
+              // backgroundColor:'',
+              resizeMode: 'contain',
+            }}
           />
         </View>
 
-        <View style={styles.buttonContainer}>
-          <MyButton title="Sign in" onPress={handleLogin} />
-          <Regular style={styles.registerText}>
-            Don’t have an account?
-            <Regular style={styles.registerLink} onPress={navigateToRegister}>
-              Register
-            </Regular>
-          </Regular>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <View style={styles.loginContainer}>
+            <Text style={styles.loginTitle}>Login to Your Account</Text>
+
+            <View style={styles.formContainer}>
+              {/* Email Input */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputLabel}>Username or Email Address</Text>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Enter Email"
+                  placeholderTextColor="#A0A0A0"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
+              </View>
+
+              {/* Password Input */}
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputLabel}>Password</Text>
+                <View style={styles.passwordContainer}>
+                  <TextInput
+                    style={styles.passwordInput}
+                    placeholder="Enter Password"
+                    placeholderTextColor="#A0A0A0"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPassword}
+                  />
+                  <TouchableOpacity
+                    style={styles.eyeButton}
+                    onPress={() => setShowPassword(!showPassword)}>
+                    <>
+                      {showPassword ? (
+                        <EYESVG height={mvs(15)} width={mvs(15)} />
+                      ) : (
+                        <HideSvg height={mvs(15)} width={mvs(15)} />
+                      )}
+                    </>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              {/* Login Button */}
+              <TouchableOpacity
+                style={styles.loginButton}
+                onPress={handleLogin}>
+                <Text style={styles.loginButtonText}>Login</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{width: '100%', alignItems: 'center'}}>
+            <View style={{width: '70%'}}>
+              {/* Info Message */}
+              <InfoBar
+                message="This app does not support account registration. Please reach out
+                to your fleet manager for assistance."
+              />
+            </View>
+
+            {/* Copyright */}
+            <View
+              style={{
+                width: '100%',
+                borderTopWidth: 1,
+                borderColor: colors.border,
+                marginTop: mvs(40),
+              }}>
+              <Text style={styles.copyright}>Copyright © 2025 OneBook ELD</Text>
+            </View>
+          </View>
         </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </View>
+    </View>
   );
 };
+
 export default LoginScreen;

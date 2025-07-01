@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {ScrollView, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
 import styles from './style';
 import AddModal from '../../../components/Modals/AddModal';
 import {HomeHeader} from '../../../components/Headers';
@@ -22,6 +28,7 @@ const HomeScreen = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#000" />
       <HomeHeader title="Home" rightButton={<NotificationSVG />} />
       <Bold style={styles.title}>Welcome to the Home Screen!</Bold>
 

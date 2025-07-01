@@ -7,7 +7,7 @@ const MyButton = ({onPress, title, disabled, icon, widt, color}) => {
       style={[
         styles.container,
         {
-          backgroundColor: disabled ? colors.grey : color || colors.primary,
+          backgroundColor: disabled ? colors.red : color || colors.red,
           height: 55,
           width: widt ? widt : '100%',
         },

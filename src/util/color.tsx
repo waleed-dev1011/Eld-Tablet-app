@@ -3,32 +3,80 @@
  */
 export const colors = {
   white: '#FFFFFF',
+  whitebg: '#fbfbfb',
   black: '#000000',
-  darkBlack: '#081428',
-  primary: '#282E68',
-  primary2: '#008080',
-  secondary: '#EAB6B6',
-  secondary2: '#59B5F7',
-  red: '#FF4B26',
-  red1: '#D70004',
-  green: '#15822D',
   transparent: 'transparent',
-  gray: '#F3F3F5',
-  blue: '#2075D9',
-  skyBlue: '#295FC833',
-  yellow: '#FEEF06',
-  grey: '#A4A4A4',
-  orange: '#B77E0F',
-  gray1: 'C2C1CD',
-  lightBlue: '#7FA7E0',
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+  border: '#ebedef',
+
+  base: {
+    darkBlack: '#081428',
+    primary: '#B7002C',
+    red: '#D30202',
+    green: '#2FA766',
+    blue: '#466FF7',
+    yellow: '#FEEF06',
+    orange: '#FCEAC8',
+    grayBg: '#C2C1CD33',
+    grayDark: '#3F4352',
+  },
+
+  btn: {
+    red: '#EE4E68',
+    Darkred: '#B7002C',
+    green: '#47BB75',
+    blue: '#30B0C7',
+    yellow: '#F6BA47',
+    gray: '#A4A4A4',
+    check: '#777E90',
+  },
+
+  text: {
+    placeholder: '#777E90',
+    primary: '#1C1E24',
+    secondary: '#FCFCFD',
+    green: '#358D0C',
+    blue: '#466FF7',
+    orange: '#D99920',
+    neutral: '#777E90',
+    red: '#D30202',
+  },
+
+  chart: {
+    red: '#B7002C',
+    green: '#358D0C',
+    blue: '#007AFF',
+    orange: '#D97D28',
+
+    rgb_red: '183, 0, 44',
+    rgb_green: '53, 141, 12',
+    rgb_blue: '0, 123, 255',
+    rgb_orange: '217, 125, 40',
+  },
+};
+
+export const shadows = {
+  xs: {
+    shadowColor: '#101828',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+  },
+  sm: {
+    shadowColor: '#101828',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.08,
+    shadowRadius: 3,
+  },
+  md: {
+    shadowColor: '#101828',
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
+  },
+  lg: {
+    shadowColor: '#101828',
+    shadowOffset: {width: 0, height: 8},
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
   },
 };
