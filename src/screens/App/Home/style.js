@@ -5,7 +5,6 @@ import {mvs} from '../../../util/metrices';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: mvs(20),
   },
   title: {
     fontSize: mvs(28),

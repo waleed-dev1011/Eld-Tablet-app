@@ -3,46 +3,65 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  StyleSheet,
   StatusBar,
+  View,
+  Image,
 } from 'react-native';
 import styles from './style';
 import AddModal from '../../../components/Modals/AddModal';
 import {HomeHeader} from '../../../components/Headers';
 import {NotificationSVG} from '../../../assets/svg';
-import Bold from '../../../typography/BoldText';
-import Regular from '../../../typography/RegularText';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {mvs} from '../../../util/metrices';
+import {colors} from '../../../util/color';
+import StatusButtons from '../../../components/Struct/HomeStruct/StatusButtons';
+import EldStatus from '../../../components/Struct/HomeStruct/EldStatus';
+import ServiceHours from '../../../components/Struct/HomeStruct/ServiceHours';
+import TripDetails from '../../../components/Struct/HomeStruct/TripDetails';
 
 const HomeScreen = () => {
-  const [isModalVisible, setModalVisible] = useState(false); // State for modal visibility
-
-  // Handle modal close
-  const handleClose = () => {
-    setModalVisible(false);
-  };
-
-  // Handle modal open
-  const handleOpen = () => {
-    setModalVisible(true);
-  };
-
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <SafeAreaView style={{flex: 1, backgroundColor: colors.white}}>
       <StatusBar barStyle="dark-content" backgroundColor="#000" />
       <HomeHeader title="Home" rightButton={<NotificationSVG />} />
-      <Bold style={styles.title}>Welcome to the Home Screen!</Bold>
+      <View style={{height: mvs(2), backgroundColor: colors.border}} />
 
-      <AddModal
-        visible={isModalVisible}
-        onClose={handleClose}
-        title="Hello"
-        message="You have opened a Modal."
-      />
+      <ScrollView contentContainerStyle={{flexGrow: 1, padding: mvs(14)}}>
+        <View style={{flex: 1}}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 2}}>
+              <View>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                  <View style={{flex: 1}}>
+                    <View>
+                      <EldStatus />
+                    </View>
+                    <View>
+                      <StatusButtons />
+                    </View>
+                  </View>
+                  <View style={{flex: 1}}>
+                    <ServiceHours />
+                  </View>
+                </View>
+                <View>
+                  <TripDetails />
+                </View>
+              </View>
+              <View></View>
+            </View>
+            <View style={{flex: 1, padding: 10}}>
+              <Text style={{color: 'white'}}>Right Column</Text>
+            </View>
+          </View>
 
-      <TouchableOpacity onPress={handleOpen} style={styles.logoutButton}>
-        <Regular style={styles.logoutButtonText}>Open Modal</Regular>
-      </TouchableOpacity>
-    </ScrollView>
+          <View style={{padding: 10}}>
+            <Text style={{color: 'white'}}>Bottom Row</Text>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
+
 export default HomeScreen;

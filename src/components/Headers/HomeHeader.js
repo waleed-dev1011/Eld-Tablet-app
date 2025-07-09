@@ -1,161 +1,106 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {mvs} from '../../util/metrices';
-import {colors} from '../../util/color';
-import {DrawerSvg, HOMESVG, MoonSvg, SunSvg} from '../../assets/svg';
-import {shadows} from '../../util/color';
-import HomeSvg from '../../assets/svg/home-svg';
-import {MessageSvg} from '../../assets/svg';
-import {NotificationSVG} from '../../assets/svg';
-import {Notification2Svg} from '../../assets/svg';
+import {colors, shadows} from '../../util/color';
+import {
+  DrawerSvg,
+  MessageSvg,
+  RestartSvg,
+  SunSvg,
+  MoonSvg,
+} from '../../assets/svg';
 import Notificationsvg from '../../assets/svg/notification-svg';
-import RefreshSvg from '../../assets/svg/refresh-svg';
-import {RestartSvg} from '../../assets/svg';
-const HomeHeader = ({
-  title = '',
-  back = false,
-  save = false,
-  noti = false,
-  onSave,
-  rightButton = null,
-  hideTitle = false,
-}) => {
+import FastImage from 'react-native-fast-image';
+
+const HomeHeader = ({}) => {
   const navigation = useNavigation();
   return (
-    <View style={[styles.container]}>
+    <View style={styles.container}>
       <TouchableOpacity
-        style={[
-          {
-            borderWidth: 1,
-            borderRadius: mvs(4),
-            borderColor: colors.border,
-            padding: mvs(2),
-            backgroundColor: '#fff',
-          },
-          shadows.xs,
-        ]}
+        style={[styles.drawerButton, shadows.xs]}
         onPress={() => {
           navigation.toggleDrawer();
         }}>
         <DrawerSvg height={25} width={30} />
       </TouchableOpacity>
+
       <View>
-        <Image
+        <FastImage
           source={require('../../assets/img/Book_ELD.png')}
-          style={{
-            height: 80,
-            width: 80,
-          }}
+          style={styles.logo}
+          resizeMode={FastImage.resizeMode.contain}
         />
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          gap: 10,
-          alignItems: 'center',
-        }}>
-        <View
-          style={[
-            {
-              borderWidth: 1,
-              borderRadius: mvs(4),
-              borderColor: colors.border,
-              padding: mvs(4),
-              backgroundColor: '#fff',
-            },
-            shadows.xs,
-          ]}>
+
+      <View style={styles.iconRow}>
+        <View style={[styles.iconWrapper, shadows.xs]}>
           <MessageSvg height={25} width={25} />
         </View>
-        <View
-          style={[
-            {
-              borderWidth: 1,
-              borderRadius: mvs(4),
-              borderColor: colors.border,
-              padding: mvs(4),
-              backgroundColor: '#fff',
-            },
-            shadows.sm,
-          ]}>
+        <View style={[styles.iconWrapper, shadows.xs]}>
           <Notificationsvg height={25} width={25} />
         </View>
-        <View
-          style={[
-            {
-              borderWidth: 1,
-              borderRadius: mvs(4),
-              borderColor: colors.border,
-              padding: mvs(4),
-              backgroundColor: '#fff',
-            },
-            shadows.xs,
-          ]}>
+        <View style={[styles.iconWrapper, shadows.xs]}>
           <RestartSvg height={25} width={25} />
         </View>
-        <View
-          style={[
-            {
-              borderWidth: 1,
-              borderRadius: mvs(8),
-              borderColor: colors.border,
-              paddingHorizontal: mvs(12),
-              paddingVertical: mvs(4),
-              backgroundColor: '#fff',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: 8,
-            },
-            shadows.sm,
-          ]}>
-          <SunSvg height={22} width={22} />
-          <MoonSvg height={22} width={22} />
+        <View style={[styles.themeSwitcher, shadows.sm]}>
+          <SunSvg height={18} width={18} />
+          <View style={styles.separator} />
+          <MoonSvg height={18} width={18} />
         </View>
       </View>
     </View>
   );
 };
 
-{
-  /* <View style={[styles.container]}>
-{back ? (
-  <TouchableOpacity onPress={() => navigation.goBack()}>
-    <HOMESVG />
-  </TouchableOpacity>
-) : (
-  <TouchableOpacity
-    onPress={() => {
-      navigation.toggleDrawer();
-    }}>
-    <DrawerSvg />
-  </TouchableOpacity>
-)}
-{!hideTitle && <Text style={[styles.text]}>{title || 'Home'}</Text>}
-{rightButton ? (
-  rightButton 
-) : save ? (
-  <TouchableOpacity onPress={onSave}>
-    <Text style={[styles.text]}>{'Save'}</Text>
-  </TouchableOpacity>
-) : (
-  <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-    {!noti && <HOMESVG />}
-  </TouchableOpacity>
-)}
-</View>
-); */
-}
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.transparent,
-    alignItems: 'center',
     backgroundColor: colors.white,
+    alignItems: 'center',
     justifyContent: 'space-between',
     height: mvs(56),
     flexDirection: 'row',
     paddingRight: mvs(20),
     paddingLeft: mvs(15),
+  },
+  drawerButton: {
+    borderWidth: 1,
+    borderRadius: mvs(4),
+    borderColor: colors.border,
+    padding: mvs(2),
+    backgroundColor: '#fff',
+  },
+  logo: {
+    height: 80,
+    width: 80,
+  },
+  iconRow: {
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'center',
+  },
+  iconWrapper: {
+    borderWidth: 1,
+    borderRadius: mvs(6),
+    borderColor: colors.border,
+    padding: mvs(4),
+    backgroundColor: '#fff',
+  },
+  themeSwitcher: {
+    borderWidth: 1,
+    borderRadius: mvs(6),
+    borderColor: colors.border,
+    paddingHorizontal: mvs(9),
+    paddingVertical: mvs(7),
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  separator: {
+    backgroundColor: '#777E90',
+    height: mvs(20),
+    width: mvs(2),
+    marginHorizontal: mvs(8),
   },
   text: {
     color: 'black',
@@ -178,4 +123,5 @@ const styles = StyleSheet.create({
     fontSize: mvs(12),
   },
 });
+
 export {HomeHeader};

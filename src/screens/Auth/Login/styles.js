@@ -1,6 +1,8 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {colors} from '../../../util/color';
 import {mvs} from '../../../util/metrices';
+
+const {width, height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -10,49 +12,57 @@ const styles = StyleSheet.create({
   leftContainer: {
     flex: 1,
   },
-  leftContent: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  leftImage: {
     width: '100%',
+    height: '100%',
   },
-
   rightContainer: {
     flex: 1,
     backgroundColor: colors.white,
+    padding: mvs(20),
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginTop: mvs(20),
+    marginBottom: mvs(10),
+  },
+  logo: {
+    height: mvs(80),
+    width: mvs(80),
+  },
+  formArea: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   loginContainer: {
     width: '70%',
     maxWidth: 400,
     alignItems: 'center',
   },
-  logoContainer: {
-    padding: 20,
-    paddingBottom: 40,
-  },
   loginTitle: {
-    fontSize: mvs(28),
+    fontSize: mvs(24),
     fontWeight: 'bold',
     color: colors.text.primary,
-    marginBottom: mvs(40),
+    marginBottom: mvs(30),
   },
   formContainer: {
     width: '100%',
   },
   inputContainer: {
-    marginBottom: 20,
+    marginBottom: mvs(15),
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: mvs(14),
     color: colors.text.primary,
-    marginBottom: 8,
+    marginBottom: mvs(6),
     fontWeight: '500',
   },
   textInput: {
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: mvs(5),
-    paddingHorizontal: 16,
+    paddingHorizontal: mvs(16),
     paddingVertical: mvs(8),
     fontSize: mvs(16),
     backgroundColor: 'white',
@@ -68,38 +78,47 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: mvs(16),
     paddingVertical: mvs(8),
     fontSize: mvs(16),
     color: colors.text.primary,
   },
   eyeButton: {
-    paddingHorizontal: 16,
+    paddingHorizontal: mvs(16),
     paddingVertical: mvs(8),
-  },
-  eyeIcon: {
-    fontSize: mvs(16),
   },
   loginButton: {
     backgroundColor: colors.black,
     borderRadius: mvs(7),
     paddingVertical: mvs(12),
     alignItems: 'center',
-    marginTop: 0,
-    marginBottom: 30,
+    marginTop: mvs(10),
+    marginBottom: mvs(30),
   },
   loginButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: mvs(16),
     fontWeight: '600',
   },
-
+  footerContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  infoWrapper: {
+    width: '70%',
+  },
+  copyrightContainer: {
+    width: '100%',
+    borderTopWidth: 1,
+    borderColor: colors.border,
+    marginTop: mvs(30),
+    paddingTop: mvs(10),
+  },
   copyright: {
-    fontSize: mvs(15),
+    fontSize: mvs(14),
     color: colors.text.primary,
-    fontWeight: '400',
-    marginVertical: mvs(20),
     textAlign: 'center',
+    fontWeight: '400',
   },
 });
 

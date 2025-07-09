@@ -7,6 +7,7 @@ export const colors = {
   black: '#000000',
   transparent: 'transparent',
   border: '#ebedef',
+  border2: '#777E90',
 
   base: {
     darkBlack: '#081428',
@@ -46,6 +47,9 @@ export const colors = {
     green: '#358D0C',
     blue: '#007AFF',
     orange: '#D97D28',
+    pink: '#EE4E68',
+    yellow: '#F6BA47',
+    skyBlue: '#30B0C7',
 
     rgb_red: '183, 0, 44',
     rgb_green: '53, 141, 12',

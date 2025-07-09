@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   ChatSVG,
   HOMESVG,
@@ -50,6 +50,23 @@ const CustomDrawerContent = props => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <View
+          style={{
+            height: 55,
+            width: 55,
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: mvs(27.5),
+            backgroundColor: '#353945',
+          }}>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: mvs(25),
+            }}>
+            AK
+          </Text>
+        </View>
         <Bold label="John Smith" style={styles.label} />
         <Regular label="john@gmail.com" style={styles.mail} />
       </View>
