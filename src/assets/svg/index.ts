@@ -34,3 +34,4 @@ export {default as XSvg} from './xSvg';
 export {default as VoiceSvg} from './voiceSvg';
 export {default as SunSvg} from './sunSvg';
 export {default as MoonSvg} from './moonSvg';
+export {default as InspectionReportSvg} from './inspectionReportSvg';

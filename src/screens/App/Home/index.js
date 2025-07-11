@@ -18,6 +18,7 @@ import StatusButtons from '../../../components/Struct/HomeStruct/StatusButtons';
 import EldStatus from '../../../components/Struct/HomeStruct/EldStatus';
 import ServiceHours from '../../../components/Struct/HomeStruct/ServiceHours';
 import TripDetails from '../../../components/Struct/HomeStruct/TripDetails';
+import DriverDashboard from '../../../components/Struct/HomeStruct/DriverDashboard';
 
 const HomeScreen = () => {
   return (
@@ -48,10 +49,15 @@ const HomeScreen = () => {
                   <TripDetails />
                 </View>
               </View>
-              <View></View>
             </View>
-            <View style={{flex: 1, padding: 10}}>
-              <Text style={{color: 'white'}}>Right Column</Text>
+            <View style={{flex: 1}}>
+              <View style={{flex: 2}}>
+                <DriverDashboard />
+              </View>
+              <View style={{flex: 1, backgroundColor: 'red'}}>
+                <Text style={{color: 'white'}}>Right Column</Text>
+              </View>
+              {/* <Text÷ style={{color: 'white'}}>Right Column</Text÷> */}
             </View>
           </View>
 

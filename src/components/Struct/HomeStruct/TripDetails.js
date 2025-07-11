@@ -31,31 +31,38 @@ const TripDetails = () => {
         <View style={styles.row}>
           <View style={styles.field}>
             <View style={styles.fieldHeader}>
-              <Text style={styles.icon}>📄</Text>
+              <Text style={styles.icon}>A</Text>
             </View>
-
-            <Text style={styles.label}>Shipping Document</Text>
-            <Text style={styles.value}>{documentData.shippingDocument}</Text>
+            <View>
+              <Text style={styles.label}>Shipping Document</Text>
+              <Text style={styles.value}>{documentData.shippingDocument}</Text>
+            </View>
           </View>
 
           <View style={styles.field}>
             <View style={styles.fieldHeader}>
-              <Text style={styles.icon}>🚛</Text>
+              <Text style={styles.icon}>T</Text>
+            </View>
+            <View>
               <Text style={styles.label}>Trailer Number</Text>
+              <Text style={styles.value}>{documentData.trailerNumber}</Text>
             </View>
-            <Text style={styles.value}>{documentData.trailerNumber}</Text>
           </View>
 
           <View style={styles.field}>
             <View style={styles.fieldHeader}>
-              <Text style={styles.icon}>📝</Text>
-              <Text style={styles.label}>Notes</Text>
+              <Text style={styles.icon}>N</Text>
             </View>
-            <Text style={styles.value}>{documentData.notes}</Text>
+            <View>
+              <Text style={styles.label}>Notes</Text>
+              <Text style={styles.value}>{documentData.notes}</Text>
+            </View>
           </View>
 
           <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
-            <Text style={styles.editIcon}>✏️</Text>
+            <View style={styles.editIconContainer}>
+              <Text style={styles.editIcon}>✏️</Text>
+            </View>
             <Text style={styles.editText}>Edit</Text>
           </TouchableOpacity>
         </View>
@@ -87,45 +94,57 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   field: {
+    flexDirection: 'row',
     flex: 1,
     marginRight: 16,
     marginBottom: 8,
   },
   fieldHeader: {
-    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    marginRight: mvs(7),
+    height: mvs(35),
+    width: mvs(35),
+    borderRadius: mvs(18),
   },
   icon: {
-    fontSize: 16,
-    marginRight: 6,
+    fontSize: mvs(16),
   },
   label: {
-    fontSize: 14,
-    color: '#666',
+    fontSize: mvs(14),
+    color: colors.text.placeholder,
     fontWeight: '500',
   },
   value: {
-    fontSize: 16,
-    color: '#333',
-    fontWeight: '400',
+    fontSize: mvs(16),
+    color: colors.text.primary,
+    fontWeight: 'bold',
   },
   editButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ff6b35',
+    // backgroundColor: '#ff6b35',
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 8,
-    marginTop: 8,
+    // borderRadius: 8,
+    // marginTop: 8,
   },
-  editIcon: {
-    fontSize: 14,
+  editIconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.chart.orange,
+    height: mvs(36),
+    width: mvs(36),
+    borderRadius: mvs(18),
     marginRight: 4,
   },
+  editIcon: {
+    fontSize: mvs(14),
+  },
   editText: {
-    color: '#ffffff',
-    fontSize: 14,
+    color: colors.chart.orange,
+    fontSize: mvs(14),
     fontWeight: '600',
   },
 });
