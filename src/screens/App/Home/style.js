@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
     fontSize: mvs(16),
     fontWeight: 'bold',
   },
+  alertbox: {
+    flex: 1,
+    height: mvs(30),
+    backgroundColor: colors.red,
+    color: colors.red,
+  },
 });
 
 export default styles;
