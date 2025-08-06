@@ -3,6 +3,9 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import TripDetailsModal from '../../Modals/TripDetailsModal';
 import {colors} from '../../../util/color';
 import {mvs} from '../../../util/metrices';
+import EditSvg from '../../../assets/svg/edit-svg';
+import SignatureModal from '../../Modals/DriverSignature';
+import DriversDailyLogModal from '../../Modals/DriverLogModal';
 
 const TripDetails = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -60,8 +63,17 @@ const TripDetails = () => {
           </View>
 
           <TouchableOpacity style={styles.editButton} onPress={handleEdit}>
-            <View style={styles.editIconContainer}>
-              <Text style={styles.editIcon}>✏️</Text>
+            <View
+              style={{
+                backgroundColor: colors.chart.orange,
+                padding: 4,
+                borderRadius: 16,
+                width: 25,
+                height: 25,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <EditSvg showBorder={false} color="white" />
             </View>
             <Text style={styles.editText}>Edit</Text>
           </TouchableOpacity>
@@ -88,15 +100,15 @@ const styles = StyleSheet.create({
     padding: mvs(16),
   },
   row: {
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flexWrap: 'wrap',
   },
   field: {
     flexDirection: 'row',
-    flex: 1,
-    marginRight: 16,
+    flex: 0.6,
     marginBottom: 8,
   },
   fieldHeader: {
@@ -122,13 +134,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   editButton: {
+    flex: 1 / 8,
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: '#ff6b35',
     paddingHorizontal: 12,
     paddingVertical: 6,
-    // borderRadius: 8,
-    // marginTop: 8,
+    justifyContent: 'flex-end',
   },
   editIconContainer: {
     alignItems: 'center',
@@ -137,15 +148,22 @@ const styles = StyleSheet.create({
     height: mvs(36),
     width: mvs(36),
     borderRadius: mvs(18),
-    marginRight: 4,
   },
   editIcon: {
     fontSize: mvs(14),
   },
   editText: {
+    marginLeft: mvs(4),
     color: colors.chart.orange,
-    fontSize: mvs(14),
+    fontSize: mvs(12),
     fontWeight: '600',
+  },
+  certifyboxContainner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: mvs(5),
+    borderRadius: mvs(18),
+    gap: mvs(5),
   },
 });
 

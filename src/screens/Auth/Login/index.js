@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react'; // ✅ useEffect added
 import {
   View,
   Text,
@@ -8,20 +8,29 @@ import {
   Dimensions,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {useNavigation} from '@react-navigation/native';
 import {EYESVG, HideSvg} from '../../../assets/svg';
 import InfoBar from '../../../components/InfoBar';
 import styles from './styles'; // Updated styles
 import {mvs} from '../../../util/metrices';
 
-const LoginScreen = () => {
+const LoginScreen = ({route, navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const navigation = useNavigation();
+  const [canGoBackToHome, setCanGoBackToHome] = useState(false);
 
   const handleLogin = () => {
     console.log('Login pressed', {email, password});
+    navigation.navigate('DrawerNavigation');
+  };
+
+  useEffect(() => {
+    if (route.params?.fromHome) {
+      setCanGoBackToHome(true);
+    }
+  }, [route.params]);
+
+  const handleBackToHome = () => {
     navigation.navigate('DrawerNavigation');
   };
 
@@ -92,6 +101,14 @@ const LoginScreen = () => {
               </View>
 
               {/* Login Button */}
+
+              {canGoBackToHome && (
+                <TouchableOpacity
+                  style={styles.goback}
+                  onPress={handleBackToHome}>
+                  <Text style={styles.gobackText}>Back to Truck</Text>
+                </TouchableOpacity>
+              )}
               <TouchableOpacity
                 style={styles.loginButton}
                 onPress={handleLogin}>

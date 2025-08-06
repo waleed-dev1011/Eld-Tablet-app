@@ -100,6 +100,20 @@ const styles = StyleSheet.create({
     fontSize: mvs(16),
     fontWeight: '600',
   },
+  goback: {
+    backgroundColor: colors.white,
+    borderRadius: mvs(7),
+    paddingVertical: mvs(12),
+    alignItems: 'center',
+    marginTop: mvs(10),
+    marginBottom: mvs(10),
+    borderWidth: 1,
+    borderColor: colors.black,
+  },
+  gobackText: {
+    fontSize: mvs(16),
+    fontWeight: '600',
+  },
   footerContainer: {
     width: '100%',
     alignItems: 'center',

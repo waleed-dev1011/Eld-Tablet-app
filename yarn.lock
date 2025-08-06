@@ -3050,6 +3050,7 @@ __metadata:
     "@types/jest": ^29.5.13
     "@types/react": ^19.0.0
     "@types/react-test-renderer": ^19.0.0
+    dayjs: ^1.11.13
     eslint: ^8.19.0
     jest: ^29.6.3
     prettier: 2.8.8
@@ -3060,7 +3061,9 @@ __metadata:
     react-native-gesture-handler: ^2.25.0
     react-native-image-crop-picker: ^0.50.1
     react-native-keyboard-aware-scroll-view: ^0.9.5
+    react-native-modal: ^14.0.0-rc.1
     react-native-paper: ^5.14.5
+    react-native-radial-slider: ^1.1.0
     react-native-reanimated: ^3.18.0
     react-native-responsive-screen: ^1.4.2
     react-native-safe-area-context: ^5.4.1
@@ -3068,10 +3071,11 @@ __metadata:
     react-native-snap-carousel: ^1.3.1
     react-native-svg: ^15.12.0
     react-native-textinput-effects: ^0.6.3
-    react-native-vector-icons: ^10.2.0
+    react-native-vector-icons: ^10.3.0
     react-redux: ^9.2.0
     react-test-renderer: 19.0.0
     redux-persist: ^6.0.0
+    toggle-switch-react-native: ^3.3.0
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -4202,7 +4206,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.8.15":
+"dayjs@npm:^1.11.13, dayjs@npm:^1.8.15":
   version: 1.11.13
   resolution: "dayjs@npm:1.11.13"
   checksum: f388db88a6aa93956c1f6121644e783391c7b738b73dbc54485578736565c8931bdfba4bb94e9b1535c6e509c97d5deb918bbe1ae6b34358d994de735055cca9
@@ -8004,7 +8008,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.7, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -8132,6 +8136,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-animatable@npm:1.4.0":
+  version: 1.4.0
+  resolution: "react-native-animatable@npm:1.4.0"
+  dependencies:
+    prop-types: ^15.8.1
+  checksum: a1b211aff745b97351d78643d641fa298f7d71524eaf22fee8a69257ce52e85d6b3caf8e7fd26a521af34984fba7402b7c632c35ea69d618769387d1dcb6b32a
+  languageName: node
+  linkType: hard
+
 "react-native-drawer-layout@npm:^4.1.11":
   version: 4.1.11
   resolution: "react-native-drawer-layout@npm:4.1.11"
@@ -8221,6 +8234,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-modal@npm:^14.0.0-rc.1":
+  version: 14.0.0-rc.1
+  resolution: "react-native-modal@npm:14.0.0-rc.1"
+  dependencies:
+    react-native-animatable: 1.4.0
+  peerDependencies:
+    react: "*"
+    react-native: ">=0.70.0"
+  checksum: 19bca96dde148c14ed4cc0e52fedd0a12ca952815e4dcbea31d0a98962d75dc3c011c677f5f9cd15f2b88f78ccd03134647b280724bc6de148c25e28eea1a7e4
+  languageName: node
+  linkType: hard
+
 "react-native-paper@npm:^5.14.5":
   version: 5.14.5
   resolution: "react-native-paper@npm:5.14.5"
@@ -8233,6 +8258,17 @@ __metadata:
     react-native: "*"
     react-native-safe-area-context: "*"
   checksum: f986937ebeb2cdea338d384dfc7814d2c0dbe3e8cd3645ce720832b78f588eccf3fc490bf1afb942a9d6046cd842984c011316c4d9c2fabf59a38ae1a47fccb3
+  languageName: node
+  linkType: hard
+
+"react-native-radial-slider@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "react-native-radial-slider@npm:1.1.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-svg: "*"
+  checksum: cf0b52d8eb4bf12cee0519fe36c46c2539f1750e1be998efa92ead037599f18a84f43d37f3f130b06c3d81a01167d0ff1327c5c7aa654d29f80cf621cdd2e112
   languageName: node
   linkType: hard
 
@@ -8323,9 +8359,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vector-icons@npm:^10.2.0":
-  version: 10.2.0
-  resolution: "react-native-vector-icons@npm:10.2.0"
+"react-native-vector-icons@npm:^10.3.0":
+  version: 10.3.0
+  resolution: "react-native-vector-icons@npm:10.3.0"
   dependencies:
     prop-types: ^15.7.2
     yargs: ^16.1.1
@@ -8334,7 +8370,7 @@ __metadata:
     fa5-upgrade: bin/fa5-upgrade.sh
     fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
-  checksum: fda930df4e63f12533268f5b339ebe4c77c691eae43503328466b3087ed868a06a4593fd246e75ac6b5ec955543eec35608c7922191bdcc3b3a94ed7f3575ef0
+  checksum: 5c431fd9a8e6efd355e34ed28ca7fa7eed30e89362280cbd1e474e6d16148c6c37f5c950a525ec0b428c79dc74b9fb7a61171fc509b6ab253e111456f3e49b71
   languageName: node
   linkType: hard
 
@@ -9425,6 +9461,17 @@ __metadata:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"toggle-switch-react-native@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "toggle-switch-react-native@npm:3.3.0"
+  dependencies:
+    prop-types: ^15.5.7
+  peerDependencies:
+    react-native: ">=0.47.1"
+  checksum: 984ec6b72c3f29ce74c66a70c98195b1278a8aeaf412d9b2c407130cf98c461379b34200b5a61356cc140189ea159b325debfe15922d76adec026d8615521989
   languageName: node
   linkType: hard
 

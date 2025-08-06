@@ -1,32 +1,60 @@
 // src/data/notificationsData.js
 
 const notificationsData = [
-    {
-      id: '1',
-      title: 'New message from John',
-      message: 'Hey, check out the new project.',
-    },
-    {
-      id: '2',
-      title: 'Meeting Reminder',
-      message: 'Don’t forget your meeting at 3 PM.',
-    },
-    {
-      id: '3',
-      title: 'System Update',
-      message: 'A new update is available for your app.',
-    },
-    {
-      id: '4',
-      title: 'New comment on your post',
-      message: 'Someone commented on your recent post.',
-    },
-    {
-      id: '5',
-      title: 'Security Alert',
-      message: 'We noticed an unusual login attempt on your account.',
-    },
-  ];
-  
-  export default notificationsData;
-  
+  {
+    id: 1,
+    title: 'Admin has added a new route.',
+    message: 'From "ABC LOCATION" to "XYZ LOCATION"',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 2,
+    title: 'Maintenance overdue',
+    message: 'Maintenance was due 2 days ago.',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 3,
+    title: 'Maintenance upcoming',
+    message: 'You have a maintenance of type "Oil Change" after 100 miles.',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 1,
+    title: 'Admin has added a new route.',
+    message: 'From "ABC LOCATION" to "XYZ LOCATION"',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 2,
+    title: 'Maintenance overdue',
+    message: 'Maintenance was due 2 days ago.',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 3,
+    title: 'Maintenance upcoming',
+    message: 'You have a maintenance of type "Oil Change" after 100 miles.',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 1,
+    title: 'Admin has added a new route.',
+    message: 'From "ABC LOCATION" to "XYZ LOCATION"',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 2,
+    title: 'Maintenance overdue',
+    message: 'Maintenance was due 2 days ago.',
+    time: '28 May, 10:04 am',
+  },
+  {
+    id: 3,
+    title: 'Maintenance upcoming',
+    message: 'You have a maintenance of type "Oil Change" after 100 miles.',
+    time: '28 May, 10:04 am',
+  },
+];
+
+export default notificationsData;

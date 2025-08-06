@@ -8,6 +8,7 @@ import Register from '../../screens/Auth/Register';
 import SplashScreen from '../../screens/Auth/Splash';
 import DrawerNavigation from '../DrawerTab/DrawerNavigation';
 import {View} from 'react-native';
+import NotificationScreen from '../../screens/App/Notification';
 const Stack = createStackNavigator();
 // enableScreens();
 

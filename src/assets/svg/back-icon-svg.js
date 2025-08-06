@@ -1,14 +1,13 @@
-import * as React from "react";
-import Svg, { Rect, Path } from "react-native-svg";
-const BackIconIconSvg = (props) => (
+import * as React from 'react';
+import Svg, {Rect, Path} from 'react-native-svg';
+const BackIconIconSvg = props => (
   <Svg
     width={42}
     height={42}
     viewBox="0 0 42 42"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+    {...props}>
     <Rect width={42} height={42} rx={21} fill="white" />
     <Rect
       x={0.5}
@@ -16,7 +15,7 @@ const BackIconIconSvg = (props) => (
       width={41}
       height={41}
       rx={20.5}
-      stroke="#C2C1CD"
+      // stroke="#C2C1CD"
       strokeOpacity={0.3}
     />
     <Path

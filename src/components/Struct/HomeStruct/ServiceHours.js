@@ -168,10 +168,10 @@ const ServiceHours = ({title = 'Hours of Service'}) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.base.grayBg,
-    marginVertical: mvs(14),
     paddingHorizontal: mvs(20),
     paddingVertical: mvs(20),
     borderRadius: mvs(12),
+    // marginBottom: mvs(12),
   },
   header: {
     flexDirection: 'row',

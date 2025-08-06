@@ -44,7 +44,7 @@ const EldStatus = ({isConnected = true, carrier = 'ELD'}) => {
         ]}>
         <View style={styles.leftSection}>
           <View style={styles.signalIcon}>
-            <WifiSvg height={mvs(24)} width={mvs(24)} />
+            <WifiSvg height={mvs(22)} width={mvs(22)} />
           </View>
           <Text style={styles.carrier}>
             {carrier}
@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.base.red,
     paddingHorizontal: mvs(12),
     paddingVertical: mvs(8),
-    marginTop: mvs(22),
     borderRadius: mvs(18),
     flexDirection: 'row',
     alignItems: 'center',
@@ -97,16 +96,16 @@ const styles = StyleSheet.create({
   signalIcon: {
     marginRight: mvs(8),
     backgroundColor: '#fff',
-    width: mvs(40),
-    height: mvs(40),
+    width: mvs(35),
+    height: mvs(35),
     borderRadius: mvs(20),
     justifyContent: 'center',
     alignItems: 'center',
   },
   carrier: {
     color: 'white',
-    fontSize: mvs(23),
-    fontWeight: '600',
+    fontSize: mvs(18),
+    fontWeight: '400',
     marginRight: mvs(8),
   },
   dot: {

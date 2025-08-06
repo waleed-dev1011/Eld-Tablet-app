@@ -6,18 +6,16 @@ const AlertBox = ({content, color, color2}) => {
   return (
     <View
       style={{
-        height: mvs(40),
         backgroundColor: color,
         justifyContent: 'center',
         paddingHorizontal: mvs(10),
+        paddingVertical: mvs(10), // add vertical padding
         borderRadius: mvs(10),
         marginVertical: mvs(5),
       }}>
-      <Text style={{color: color2}}>{content}</Text>
+      <Text style={{color: color2, fontSize: mvs(12)}}>{content}</Text>
     </View>
   );
 };
 
 export default AlertBox;
-
-const styles = StyleSheet.create({});

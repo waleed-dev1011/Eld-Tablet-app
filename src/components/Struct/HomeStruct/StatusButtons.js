@@ -18,6 +18,7 @@ import MidTruckSvg from '../../../assets/svg/midTruckSvg';
 import {MoonSvg} from '../../../assets/svg';
 import PowerOnSvg from '../../../assets/svg/powerOnSvg';
 import TransferSvg from '../../../assets/svg/transferSvg';
+import ChangeDutyStatusModal from '../../Modals/ChangeDutyModal';
 
 const StatusButtons = () => {
   const [currentStatus, setCurrentStatus] = useState('off-duty'); // 'off-duty', 'sleep', 'on-duty'
@@ -26,6 +27,8 @@ const StatusButtons = () => {
     minutes: 45,
     seconds: 32,
   });
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   // Timer effect to update seconds
   useEffect(() => {
@@ -143,17 +146,22 @@ const StatusButtons = () => {
   const LeftIcon = config.leftButton.iconComponent;
   const RightIcon = config.rightButton.iconComponent;
 
+  const handleEdit = () => {
+    setModalVisible(true);
+  };
+
   return (
     <View style={styles.container}>
       {/* Main Status Card */}
-      <View
+      <TouchableOpacity
+        onPress={handleEdit}
         style={[styles.statusCard, {backgroundColor: config.backgroundColor}]}>
         <View style={styles.iconContainer}>
           <IconComponent height={mvs(35)} width={mvs(35)} />
         </View>
         <Text style={styles.statusTitle}>{config.title}</Text>
         <Text style={styles.timeText}>{formatTime()}</Text>
-      </View>
+      </TouchableOpacity>
 
       {/* Separator */}
       <View style={styles.separator}>
@@ -180,6 +188,14 @@ const StatusButtons = () => {
           <Text style={styles.buttonText}>{config.rightButton.text}</Text>
         </TouchableOpacity>
       </View>
+      <ChangeDutyStatusModal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        onSave={data => {
+          console.log('Form Data:', data);
+          setModalVisible(false); // Close modal after save
+        }}
+      />
     </View>
   );
 };

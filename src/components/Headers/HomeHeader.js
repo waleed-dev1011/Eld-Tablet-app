@@ -25,21 +25,25 @@ const HomeHeader = ({}) => {
         <DrawerSvg height={25} width={30} />
       </TouchableOpacity>
 
-      <View>
+      <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
         <FastImage
           source={require('../../assets/img/Book_ELD.png')}
           style={styles.logo}
           resizeMode={FastImage.resizeMode.contain}
         />
-      </View>
+      </TouchableOpacity>
 
       <View style={styles.iconRow}>
-        <View style={[styles.iconWrapper, shadows.xs]}>
+        <TouchableOpacity
+          style={[styles.iconWrapper, shadows.xs]}
+          onPress={() => navigation.navigate('Chat')}>
           <MessageSvg height={25} width={25} />
-        </View>
-        <View style={[styles.iconWrapper, shadows.xs]}>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('NotificationScreen')}
+          style={[styles.iconWrapper, shadows.xs]}>
           <Notificationsvg height={25} width={25} />
-        </View>
+        </TouchableOpacity>
         <View style={[styles.iconWrapper, shadows.xs]}>
           <RestartSvg height={25} width={25} />
         </View>

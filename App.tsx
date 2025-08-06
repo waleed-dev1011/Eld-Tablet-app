@@ -7,18 +7,22 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigation/StackNavigation/Navigation';
 import {LogBox, StatusBar} from 'react-native';
+import {Provider as PaperProvider} from 'react-native-paper';
+
 LogBox.ignoreAllLogs();
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <GestureHandlerRootView>
-          <NavigationContainer>
-            {/* <StatusBar barStyle="dark-content" backgroundColor="#fff" /> */}
-            <AppNavigator />;
-          </NavigationContainer>
-        </GestureHandlerRootView>
-      </PersistGate>
+      <PaperProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <GestureHandlerRootView>
+            <NavigationContainer>
+              {/* <StatusBar barStyle="dark-content" backgroundColor="#fff" /> */}
+              <AppNavigator />;
+            </NavigationContainer>
+          </GestureHandlerRootView>
+        </PersistGate>
+      </PaperProvider>
     </Provider>
   );
 }

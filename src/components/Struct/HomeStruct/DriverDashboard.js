@@ -1,18 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {mvs} from '../../../util/metrices';
 import {colors} from '../../../util/color';
 import LogoutSvg from '../../../assets/svg/logout';
-import SwitchSvg from '../../../assets/svg/switch';
 import SwitchUserSvg from '../../../assets/svg/switchUser';
 import {InspectionReportSvg, ReportSvg} from '../../../assets/svg';
 import NotesSvg from '../../../assets/svg/notesSvg';
+import SwitchDriverModal from '../../Modals/SwitchDriverModal';
+import ShippingDocumentModal from '../../Modals/ShippingDocumentModal';
+import {useNavigation} from '@react-navigation/native';
 
-const DriverDashboard = ({
+const DriveDarshboard = ({
   driverId = '1021',
   driverName = 'John Smith',
   vehicleModel = 'BMW mi7 2019',
 }) => {
+  const navigation = useNavigation();
+
+  const [modalVisible, setModalVisible] = useState(false); // For SwitchDriverModal
+  const [shippingModalVisible, setShippingModalVisible] = useState(false); // For ShippingDocumentModal
+
+  const handleOpenModal = () => setModalVisible(true);
+  const handleCloseModal = () => setModalVisible(false);
+
+  const handleConfirm = () => {
+    setModalVisible(false);
+    setShippingModalVisible(true); // Show ShippingDocumentModal
+  };
+
+  const handleCloseShippingModal = () => setShippingModalVisible(false);
+
   const getCurrentDate = () => {
     const now = new Date();
     const day = now.getDate();
@@ -35,13 +52,13 @@ const DriverDashboard = ({
         <View style={styles.dateContainer}>
           <View
             style={{
-              height: mvs(56),
-              width: mvs(56),
-              borderRadius: mvs(56 / 2),
+              height: mvs(40),
+              width: mvs(40),
+              borderRadius: mvs(40 / 2),
               backgroundColor: colors.white,
               justifyContent: 'center',
               alignItems: 'center',
-              marginRight: mvs(12),
+              marginRight: mvs(10),
             }}>
             <Text style={styles.dayNumber}>{day}</Text>
           </View>
@@ -53,29 +70,29 @@ const DriverDashboard = ({
 
         <View
           style={{
-            height: mvs(50),
+            height: mvs(40),
             backgroundColor: colors.border,
             width: mvs(3),
-            marginHorizontal: mvs(12),
+            marginHorizontal: mvs(10),
           }}
         />
 
         <View style={styles.driverContainer}>
           <View
             style={{
-              height: mvs(56),
-              width: mvs(56),
-              borderRadius: mvs(56 / 2),
+              height: mvs(40),
+              width: mvs(40),
+              borderRadius: mvs(40 / 2),
               backgroundColor: colors.white,
               justifyContent: 'center',
               alignItems: 'center',
-              marginRight: mvs(12),
+              marginRight: mvs(10),
             }}>
             <Text style={styles.driverId}>{driverId}</Text>
           </View>
           <View>
-            <Text style={styles.driverName}>{driverName},</Text>
-            <Text style={styles.vehicleModel}>{vehicleModel}</Text>
+            <Text style={styles.dateText}>{driverName},</Text>
+            <Text style={styles.dateText}>{vehicleModel}</Text>
           </View>
         </View>
       </View>
@@ -84,7 +101,7 @@ const DriverDashboard = ({
           height: mvs(3),
           backgroundColor: colors.border,
           marginTop: mvs(8),
-          marginBottom: mvs(15),
+          marginBottom: mvs(10),
         }}
       />
 
@@ -93,7 +110,7 @@ const DriverDashboard = ({
         <View style={styles.buttonRow}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleButtonPress('Inspection Report')}>
+            onPress={() => navigation.navigate('InspectionReport')}>
             {/* <Text style={styles.buttonIcon}>🔍</Text> */}
             <InspectionReportSvg />
             <Text style={styles.buttonText}>Inspection</Text>
@@ -102,7 +119,7 @@ const DriverDashboard = ({
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleButtonPress('Log Report')}>
+            onPress={() => navigation.navigate('LogReport')}>
             {/* <Text style={styles.buttonIcon}>📋</Text> */}
             <NotesSvg />
             <Text style={styles.buttonText}>Log Report</Text>
@@ -110,9 +127,7 @@ const DriverDashboard = ({
         </View>
 
         <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => handleButtonPress('Co-driver')}>
+          <TouchableOpacity style={styles.button} onPress={handleOpenModal}>
             {/* <Text style={styles.buttonIcon}>👥</Text> */}
             <SwitchUserSvg />
             <Text style={styles.buttonText}>Co-driver</Text>
@@ -120,32 +135,39 @@ const DriverDashboard = ({
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleButtonPress('Leave Truck')}>
+            onPress={() => navigation.navigate('Login', {fromHome: true})}>
             {/* <Text style={styles.buttonIcon}>🚛</Text> */}
             <LogoutSvg />
             <Text style={styles.buttonText}>Leave Truck</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <SwitchDriverModal
+        visible={modalVisible}
+        onCancel={handleCloseModal}
+        onConfirm={handleConfirm}
+      />
+      <ShippingDocumentModal
+        visible={shippingModalVisible}
+        onClose={handleCloseShippingModal}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    backgroundColor: '#f5f5f5',
-    padding: 20,
-    margin: mvs(20),
-    borderRadius: mvs(15),
+    backgroundColor: colors.base.grayBg,
+    paddingHorizontal: mvs(20),
+    paddingVertical: mvs(22),
+    borderRadius: mvs(12),
+    flex: 1,
   },
   header: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // borderBottomWidth: 3,
-    // borderBottomColor: colors.border,
   },
   dateContainer: {
     flex: 1,
@@ -153,15 +175,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dayNumber: {
-    fontSize: mvs(20),
-    fontWeight: 'bold',
+    fontSize: mvs(12),
+    fontWeight: '600',
     color: '#333',
-    lineHeight: 50,
+    lineHeight: 40,
   },
   dateText: {
-    fontSize: mvs(14),
+    fontSize: mvs(10),
     color: '#666',
-    fontWeight: '500',
+    fontWeight: '400',
   },
   driverContainer: {
     flex: 1.5,
@@ -169,20 +191,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   driverId: {
-    fontSize: mvs(20),
+    fontSize: mvs(12),
     fontWeight: 'bold',
     color: '#333',
-    lineHeight: 50,
+    lineHeight: 40,
   },
   driverName: {
-    fontSize: mvs(15),
+    fontSize: mvs(12),
     color: '#666',
-    fontWeight: '500',
+    fontWeight: '400',
   },
   vehicleModel: {
-    fontSize: mvs(15),
+    fontSize: mvs(12),
     color: '#666',
-    fontWeight: '500',
+    fontWeight: '400',
   },
   buttonsContainer: {
     flex: 1,
@@ -199,21 +221,20 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     width: '48%',
     height: 100,
-    // paddingVertical: mvs(12),
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonIcon: {
-    fontSize: 30,
+    fontSize: 25,
     marginBottom: 8,
   },
   buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: '400',
     color: '#333',
     textAlign: 'center',
   },
 });
 
-export default DriverDashboard;
+export default DriveDarshboard;
